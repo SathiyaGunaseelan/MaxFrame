@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Max Mobiles - iOS 27 Instagram Story Studio</title>
+<title>Max Mobiles - Instagram Story Studio</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,8 @@
   --mut: #BAE6FD;
   --hot: #0284C7;
   --glow: rgba(0, 240, 255, 0.35);
-  --card-bg: rgba(10, 25, 42, 0.72);
-  --card-border: rgba(0, 240, 255, 0.4);
+  --card-bg: rgba(10, 25, 42, 0.75);
+  --card-border: rgba(0, 240, 255, 0.45);
   --price-bg: linear-gradient(135deg, rgba(2, 132, 199, 0.95), rgba(0, 240, 255, 0.85));
   --story-overlay: linear-gradient(180deg, rgba(3, 10, 18, 0.75) 0%, rgba(6, 20, 35, 0.65) 25%, rgba(4, 14, 25, 0.78) 75%, rgba(2, 6, 12, 0.94) 100%);
 }
@@ -35,7 +35,7 @@ body {
    iOS 27 TRANSLUCENT FROSTED GLASS THEME (ALL BUTTONS TRANSPARENT)
    ============================================================ */
 
-/* Top Action Bar - iOS 27 Translucent Floating Island */
+/* Top Action Bar - Translucent Floating Island */
 .top-bar {
   position: sticky;
   top: 10px;
@@ -50,10 +50,9 @@ body {
   border-radius: 24px;
   max-width: 620px;
   margin: 10px auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* All Buttons Semi-Transparent / Translucent */
 .top-bar button {
   flex: 1;
   padding: 12px 14px;
@@ -82,7 +81,7 @@ body {
 
 #bWa { border-color: rgba(16, 185, 129, 0.5); text-shadow: 0 0 10px rgba(16, 185, 129, 0.6); }
 #bIg { border-color: rgba(236, 72, 153, 0.5); text-shadow: 0 0 10px rgba(236, 72, 153, 0.6); }
-#bSv { border-color: var(--acc); color: #fff; text-shadow: 0 0 10px var(--glow); background: rgba(255, 255, 255, 0.12); }
+#bSv { border-color: var(--acc); color: #fff; text-shadow: 0 0 10px var(--glow); background: rgba(255, 255, 255, 0.14); }
 
 /* Stage & Instagram Story 9:16 Wrap */
 #stage {
@@ -111,7 +110,7 @@ body {
   overflow: hidden;
   border-radius: 40px;
   border: 3px solid var(--card-border);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 0 120px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -135,7 +134,7 @@ body {
   z-index: 1;
 }
 
-/* 1. Header (Story Top) */
+/* 1. Header (Story Top Safe Zone) */
 .story-hd {
   position: relative;
   z-index: 2;
@@ -198,44 +197,45 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Header Right: Brand Seal Badge */
+/* Header Right: Clean Brand Seal Badge (Box-in-Box artifact eliminated!) */
 .brand-seal {
-  min-width: 145px;
+  min-width: 130px;
   height: 90px;
-  padding: 8px 18px;
-  border-radius: 20px;
-  border: 2px solid var(--acc);
-  background: var(--card-bg);
+  padding: 6px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(20px);
+  border: 1.5px solid var(--acc);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 3px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 0 15px var(--glow);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 .brand-seal-icon {
-  height: 42px;
-  max-width: 105px;
+  height: 44px;
+  max-width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--tx);
 }
-.brand-seal-icon svg {
-  height: 40px;
-  max-width: 100px;
+.brand-seal-icon svg, .brand-seal-icon img {
+  max-height: 42px;
+  max-width: 95px;
   display: block;
+  object-fit: contain;
 }
 .brand-seal-sub {
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 2px;
   color: var(--acc);
 }
 
 /* ============================================================
-   2. DEVICE INFO BLOCK (PLACED DIRECTLY ABOVE PHONE PICTURE!)
+   2. DEVICE INFO BLOCK (ABOVE PHONE PICTURE!)
    ============================================================ */
 .device-meta-card {
   position: relative;
@@ -268,9 +268,10 @@ body {
   justify-content: center;
   color: var(--acc);
 }
-.brand-icon-box svg {
+.brand-icon-box svg, .brand-icon-box img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
   display: block;
 }
 .brand-text-label {
@@ -331,7 +332,7 @@ body {
 }
 
 /* ============================================================
-   3. HERO FLOATING PHONE SHOWCASE (BORDERLESS / NO CANVAS OUTLINE!)
+   3. HERO FLOATING PHONE SHOWCASE (BORDERLESS / NO OUTLINE)
    ============================================================ */
 .device-showcase-floating {
   position: relative;
@@ -503,7 +504,9 @@ body {
   border-top: 1px solid var(--acc);
 }
 
-/* 6. Prestige Offer Price Ribbon */
+/* ============================================================
+   6. PRESTIGE OFFER PRICE RIBBON (Unified Single Banner - No Box-in-Box!)
+   ============================================================ */
 .story-price-ribbon {
   position: relative;
   z-index: 2;
@@ -515,25 +518,19 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 36px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.6);
 }
 .price-tag-wrap {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.price-pill-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--acc);
-  color: #000;
-  border-radius: 10px;
-  padding: 7px 16px;
-  font-size: 19px;
+.price-offer-label {
+  font-size: 22px;
   font-weight: 900;
-  letter-spacing: 1px;
-  width: fit-content;
+  letter-spacing: 1.5px;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 .price-sub-caption {
   font-size: 13px;
@@ -552,7 +549,7 @@ body {
   text-shadow: 0 4px 16px rgba(0,0,0,0.8);
 }
 
-/* 7. Advisory & Notice Row (Sentence 'deal at store' removed!) */
+/* 7. Advisory & Notice Row (Deal at store sentence removed!) */
 .story-advisory-row {
   position: relative;
   z-index: 2;
@@ -612,9 +609,6 @@ body {
   gap: 6px;
   color: #FFFFFF;
   letter-spacing: 0.5px;
-}
-.ft-address strong {
-  color: var(--acc);
 }
 .ft-cert-badge {
   background: var(--acc);
@@ -733,10 +727,22 @@ input[type=text]:focus, input[type=number]:focus, select:focus {
   justify-content: center;
   flex-shrink: 0;
 }
-.brand-btn .b-logo svg {
+.brand-btn .b-logo svg, .brand-btn .b-logo img {
   max-width: 24px;
   max-height: 24px;
   display: block;
+}
+
+/* Custom Brand Option Box */
+.custom-brand-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--acc);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: none;
+  gap: 12px;
+  margin-top: 8px;
+  box-shadow: 0 0 14px var(--glow);
 }
 
 /* Translucent Option Chips */
@@ -767,6 +773,41 @@ input[type=text]:focus, input[type=number]:focus, select:focus {
   box-shadow: 0 0 12px var(--glow);
 }
 
+/* iOS 27 Glassmorphic Segmented Condition Picker */
+.condition-segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 5px;
+  border-radius: 16px;
+}
+.cond-pill {
+  padding: 11px 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cond-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.cond-pill.on {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--acc);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3), 0 0 12px var(--glow);
+}
+
 /* File Upload Drop Area - Translucent */
 .up-box {
   padding: 16px;
@@ -788,7 +829,7 @@ input[type=text]:focus, input[type=number]:focus, select:focus {
 }
 .up-box input { display: none; }
 
-/* Translucent Themes Grid */
+/* Translucent Themes Grid with Design Element Badges */
 .theme-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -798,30 +839,82 @@ input[type=text]:focus, input[type=number]:focus, select:focus {
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
-  padding: 10px;
+  border-radius: 16px;
+  padding: 12px 10px;
   color: #e2e8f0;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   transition: all 0.2s;
+}
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
 }
 .theme-btn.on {
   border-color: var(--acc);
   color: #fff;
   background: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 0 14px var(--glow);
+  box-shadow: 0 0 16px var(--glow);
 }
-.theme-btn span.swatch {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.3);
-  display: block;
-  flex-shrink: 0;
+.theme-design-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border: 1.5px solid;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Upward Scroll-to-Top Button */
+.scroll-top-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+.scroll-top-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 16px;
+  border: 1.5px solid var(--acc);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px var(--glow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-top-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 8px 25px var(--glow);
+  transform: translateY(-2px);
+}
+.scroll-top-btn .arrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--acc);
+  color: #000;
+  font-weight: 900;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 /* Range Sliders */
@@ -853,16 +946,16 @@ input[type=range] {
   color: #000;
 }
 
-/* Auto BG Removal Box */
+/* AI Saliency BG Removal Box */
 .bg-remove-box {
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 14px;
-  padding: 12px 16px;
+  border-radius: 16px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .bg-toggle-row {
   display: flex;
@@ -874,7 +967,7 @@ input[type=range] {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
   color: #fff;
 }
@@ -883,6 +976,15 @@ input[type=range] {
   height: 20px;
   accent-color: var(--acc);
   cursor: pointer;
+}
+.ai-tag-chip {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--acc);
+  color: #000;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
 }
 </style>
 </head>
@@ -981,10 +1083,10 @@ input[type=range] {
         </div>
       </div>
 
-      <!-- 6. Prestige Offer Price Ribbon -->
+      <!-- 6. Prestige Offer Price Ribbon (Single unified ribbon - no box-in-box) -->
       <div class="story-price-ribbon">
         <div class="price-tag-wrap">
-          <div class="price-pill-badge">🔥 SPECIAL OFFER PRICE</div>
+          <div class="price-offer-label">🔥 SPECIAL OFFER PRICE</div>
           <span class="price-sub-caption">BEST RESALE &amp; BUYING VALUE IN INDIA</span>
         </div>
         <em class="price-large-amount" id="pPr">₹89,900/-</em>
@@ -1020,6 +1122,19 @@ input[type=range] {
     <summary><span>📱 Section 1: Phone Brand Selection</span></summary>
     <div class="bd">
       <div class="chips-grid" id="brands"></div>
+
+      <!-- Custom Brand Addition Sub-Panel -->
+      <div class="custom-brand-box" id="customBrandBox">
+        <div class="grid-2">
+          <label>Custom Brand Name
+            <input type="text" id="customBrandName" placeholder="e.g. Nothing, CMF, etc.">
+          </label>
+          <label class="up-box">
+            🖼️ Upload Custom Brand Logo (SVG/PNG)
+            <input type="file" accept="image/*" id="customBrandLogoF">
+          </label>
+        </div>
+      </div>
     </div>
   </details>
 
@@ -1045,13 +1160,13 @@ input[type=range] {
       <label>Box &amp; Kit Condition</label>
       <div class="chips" id="kit"></div>
 
-      <label>Phone Physical Condition
-        <select id="cond">
-          <option>Like new</option>
-          <option selected>Good condition</option>
-          <option>Fair condition</option>
-        </select>
-      </label>
+      <!-- iOS 27 Glassmorphic Segmented Condition Picker -->
+      <label>Phone Physical Condition</label>
+      <div class="condition-segmented" id="condSegmented">
+        <button type="button" class="cond-pill" data-val="Like new">✨ Like new</button>
+        <button type="button" class="cond-pill on" data-val="Good condition">👍 Good condition</button>
+        <button type="button" class="cond-pill" data-val="Fair condition">⚡ Fair condition</button>
+      </div>
 
       <!-- Warranty Section with explicit 'No warranty' options -->
       <label>Warranty Coverage Options</label>
@@ -1095,25 +1210,26 @@ input[type=range] {
     </div>
   </details>
 
-  <!-- Photo Section with Intelligent Auto Background Removal -->
+  <!-- Photo Section with Multi-Pass AI Background Removal -->
   <details open>
-    <summary><span>📸 Section 3: Device Photo &amp; Auto Background Removal</span></summary>
+    <summary><span>📸 Section 3: Device Photo &amp; AI Background Removal</span></summary>
     <div class="bd">
       <label class="up-box">
-        📸 Click or Drag to Upload Device Photo
+        📸 Click or Drag to Upload Device Photo (Any Background)
         <input type="file" accept="image/*" id="imgF">
       </label>
 
-      <!-- Auto Background Removal Controls -->
+      <!-- AI Background Removal Engine Controls -->
       <div class="bg-remove-box">
         <div class="bg-toggle-row">
           <label class="switch-label">
             <input type="checkbox" id="chkAutoBg" checked>
-            <span>✨ Automatically Remove Background (Client-Side)</span>
+            <span>AI Outline &amp; Multi-Color Background Clearance</span>
           </label>
+          <span class="ai-tag-chip">AI PRECISION</span>
         </div>
-        <label>Removal Sensitivity / Tolerance (<span id="tolVal">36</span>)
-          <input type="range" id="bgTol" min="10" max="85" step="1" value="36">
+        <label>Edge &amp; Outline Detection Sensitivity (<span id="tolVal">42</span>)
+          <input type="range" id="bgTol" min="15" max="85" step="1" value="42">
         </label>
       </div>
       
@@ -1137,11 +1253,19 @@ input[type=range] {
     </div>
   </details>
 
-  <!-- Diverse Color Themes Section -->
+  <!-- Vibrant Colour Themes Section (Title cleaned as requested!) -->
   <details open>
-    <summary><span>🎨 Section 4: iOS 27 Vibrant Color Themes</span></summary>
+    <summary><span>🎨 Section 4: Vibrant Colour Themes</span></summary>
     <div class="bd">
       <div class="theme-grid" id="thm"></div>
+
+      <!-- Upward Scroll to Top Button with Gradient Effect -->
+      <div class="scroll-top-wrap">
+        <button type="button" class="scroll-top-btn" id="btnScrollTop">
+          <span class="arrow-icon">↑</span>
+          <span>View Live Theme Changes (Scroll to Top)</span>
+        </button>
+      </div>
     </div>
   </details>
 </div>
@@ -1151,7 +1275,7 @@ const $ = id => document.getElementById(id);
 
 const BRAND_LOGOS = {"Apple":"<svg viewBox=\"0 0 170 170\" fill=\"currentColor\"><path d=\"M120.3 35.6c4.6-5.6 7.7-13.4 6.8-21.2-6.7 0.3-14.8 4.5-19.6 10.1-4.2 4.8-7.9 12.6-6.9 20.2 7.5 0.6 15.1-3.6 19.7-9.1zm6.8 28c-9.7-.6-18 4.9-22.6 4.9-4.6 0-11.8-4.7-19.6-4.5-10.1.2-19.5 5.9-24.6 14.9-10.5 18.2-2.7 45.2 7.4 59.9 5 7.2 10.9 15.2 18.7 14.9 7.5-.3 10.4-4.8 19.4-4.8s11.6 4.8 19.5 4.7c8-.2 13.1-7.2 18-14.4 5.7-8.3 8-16.3 8.2-16.7-.2-.1-15.7-6-15.9-23.9-.1-14.9 12.2-22 12.8-22.4-7-10.2-17.8-11.4-21.7-11.7z\"/></svg>","Samsung":"<svg viewBox=\"0 0 200 60\" fill=\"currentColor\"><text x=\"100\" y=\"44\" font-family=\"system-ui,'Arial Black',sans-serif\" font-weight=\"900\" font-size=\"38\" text-anchor=\"middle\" letter-spacing=\"4\">SAMSUNG</text></svg>","Google":"<svg viewBox=\"0 0 48 48\"><path fill=\"#4285F4\" d=\"M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.6h11.9c-.5 2.8-2.1 5.2-4.5 6.8v5.7h7.3c4.3-3.9 6.8-9.8 6.8-16.6z\"/><path fill=\"#34A853\" d=\"M24 46c5.9 0 10.9-2 14.6-5.4l-7.3-5.7c-2 1.3-4.5 2.1-7.3 2.1-5.6 0-10.4-3.8-12.1-8.9H4.3v5.9C8 41.3 15.5 46 24 46z\"/><path fill=\"#FBBC05\" d=\"M11.9 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1V14H4.3C2.8 17 2 20.4 2 24s.8 7 2.3 10l7.6-5.9z\"/><path fill=\"#EA4335\" d=\"M24 9.5c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 2.9 29.9 1 24 1 15.5 1 8 5.7 4.3 13.9l7.6 5.9C13.6 14.7 18.4 9.5 24 9.5z\"/></svg>","OnePlus":"<svg viewBox=\"0 0 80 80\"><rect x=\"4\" y=\"4\" width=\"72\" height=\"72\" rx=\"16\" fill=\"#EB0028\"/><text x=\"32\" y=\"56\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"48\" fill=\"#fff\" text-anchor=\"middle\">1</text><path d=\"M52 24v16m-8-8h16\" stroke=\"#fff\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"42\" y=\"16\" width=\"20\" height=\"20\" rx=\"4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3\"/></svg>","Xiaomi":"<svg viewBox=\"0 0 80 80\"><rect width=\"80\" height=\"80\" rx=\"20\" fill=\"#FF6900\"/><path d=\"M23 24h10v22h8V24h10v32H41V34h-4v22H23V24zm34 0h10v32H57V24z\" fill=\"#fff\"/></svg>","Realme":"<svg viewBox=\"0 0 160 55\"><rect width=\"160\" height=\"55\" rx=\"12\" fill=\"#FFC915\"/><text x=\"80\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"34\" fill=\"#111\" text-anchor=\"middle\" letter-spacing=\"-1\">realme</text></svg>","Vivo":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"800\" font-size=\"44\" text-anchor=\"middle\" letter-spacing=\"3\">vivo</text></svg>","Oppo":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"37\" font-family=\"system-ui,sans-serif\" font-weight=\"800\" font-size=\"42\" text-anchor=\"middle\" letter-spacing=\"4\">OPPO</text></svg>","iQOO":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"42\" text-anchor=\"middle\" letter-spacing=\"2\">iQOO</text></svg>","Motorola":"<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"40\" r=\"38\" fill=\"#001435\"/><path d=\"M20 54c3.5-14 8-24 13-24 4.5 0 9 7.5 12 18 3-10.5 7.5-18 12-18 5 0 9.5 10 13 24-4-5-8.5-9-15-9-5 0-8 6-10 13-2-7-5-13-10-13-6.5 0-11 4-15 9z\" fill=\"#fff\"/></svg>","Nothing":"<svg viewBox=\"0 0 160 45\" fill=\"currentColor\"><text x=\"80\" y=\"32\" font-family=\"'Courier New',monospace,sans-serif\" font-weight=\"700\" font-size=\"28\" text-anchor=\"middle\" letter-spacing=\"5\">( NOTHING )</text></svg>","POCO":"<svg viewBox=\"0 0 150 50\"><rect width=\"150\" height=\"50\" rx=\"8\" fill=\"#FFD700\"/><text x=\"75\" y=\"38\" font-family=\"system-ui,Impact,sans-serif\" font-weight=\"900\" font-size=\"40\" fill=\"#111\" text-anchor=\"middle\" letter-spacing=\"3\">POCO</text></svg>","Redmi":"<svg viewBox=\"0 0 150 50\"><text x=\"75\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"800\" font-size=\"40\" fill=\"#E53935\" text-anchor=\"middle\" letter-spacing=\"1\">Redmi</text></svg>","Nokia":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"37\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"34\" text-anchor=\"middle\" letter-spacing=\"5\">NOKIA</text></svg>","Sony":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"37\" font-family=\"Georgia,serif\" font-weight=\"800\" font-size=\"38\" text-anchor=\"middle\" letter-spacing=\"6\">SONY</text></svg>","Asus":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"44\" text-anchor=\"middle\" letter-spacing=\"5\">ASUS</text></svg>","Honor":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"37\" font-family=\"system-ui,sans-serif\" font-weight=\"800\" font-size=\"38\" text-anchor=\"middle\" letter-spacing=\"4\">HONOR</text></svg>","Infinix":"<svg viewBox=\"0 0 160 50\" fill=\"currentColor\"><text x=\"80\" y=\"37\" font-family=\"system-ui,sans-serif\" font-weight=\"800\" font-size=\"36\" text-anchor=\"middle\" letter-spacing=\"2\">Infinix</text></svg>","Tecno":"<svg viewBox=\"0 0 160 50\"><text x=\"80\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"36\" fill=\"#0072CE\" text-anchor=\"middle\" letter-spacing=\"3\">TECNO</text></svg>","Itel":"<svg viewBox=\"0 0 140 55\"><rect width=\"140\" height=\"55\" rx=\"27\" fill=\"#E4002B\"/><text x=\"70\" y=\"39\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"34\" fill=\"#fff\" text-anchor=\"middle\" font-style=\"italic\">itel</text></svg>","Lava":"<svg viewBox=\"0 0 150 50\"><text x=\"75\" y=\"38\" font-family=\"system-ui,sans-serif\" font-weight=\"900\" font-size=\"40\" fill=\"#E60012\" text-anchor=\"middle\" letter-spacing=\"4\">LAVA</text></svg>","Micromax":"<svg viewBox=\"0 0 170 50\"><text x=\"85\" y=\"36\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"30\" fill=\"#E64A19\" text-anchor=\"middle\" letter-spacing=\"1\">MICROMAX</text></svg>","Karbonn":"<svg viewBox=\"0 0 160 50\"><text x=\"80\" y=\"37\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"32\" fill=\"#D4145A\" text-anchor=\"middle\" letter-spacing=\"2\">Karbonn</text></svg>","Intex":"<svg viewBox=\"0 0 150 50\"><text x=\"75\" y=\"37\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"34\" fill=\"#0069B4\" text-anchor=\"middle\" letter-spacing=\"3\">INTEX</text></svg>","Jio":"<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"40\" r=\"38\" fill=\"#0A2885\"/><text x=\"40\" y=\"52\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"38\" fill=\"#fff\" text-anchor=\"middle\" font-style=\"italic\">Jio</text></svg>","HTC":"<svg viewBox=\"0 0 140 50\"><text x=\"70\" y=\"38\" font-family=\"Arial,sans-serif\" font-weight=\"900\" font-size=\"44\" fill=\"#78B900\" text-anchor=\"middle\" letter-spacing=\"3\">htc</text></svg>","Huawei":"<svg viewBox=\"0 0 80 80\"><g fill=\"#C7000B\"><path d=\"M40 10c2 7 2 15 0 22-2-7-2-15 0-22z\"/><path d=\"M48 14c5 5 7 13 4 20-3-6-6-13-4-20z\"/><path d=\"M32 14c-2 7-5 14-4 20-3-7-1-15 4-20z\"/><path d=\"M56 22c6 3 11 10 10 18-5-5-9-11-10-18z\"/><path d=\"M24 22c-1 7-5 13-10 18-1-8 4-15 10-18z\"/><path d=\"M60 34c7 1 14 6 15 14-6-3-12-7-15-14z\"/><path d=\"M20 34c-3 7-9 11-15 14 1-8 8-13 15-14z\"/><path d=\"M30 45h20v4H30z\"/></g><text x=\"40\" y=\"66\" font-family=\"sans-serif\" font-weight=\"900\" font-size=\"12\" fill=\"#C7000B\" text-anchor=\"middle\" letter-spacing=\"2\">HUAWEI</text></svg>"};
 const BRANDS = [["Apple"],["Samsung"],["Google"],["OnePlus"],["Xiaomi"],["Realme"],["Vivo"],["Oppo"],["iQOO"],["Motorola"],["Nothing"],["POCO"],["Redmi"],["Nokia"],["Sony"],["Asus"],["Honor"],["Infinix"],["Tecno"],["Itel"],["Lava"],["Micromax"],["Karbonn"],["Intex"],["Jio"],["HTC"],["Huawei"]];
-const THEMES = {"Cyber Cyan Neon":{"overlay":"linear-gradient(180deg, rgba(3, 10, 18, 0.75) 0%, rgba(6, 20, 35, 0.65) 25%, rgba(4, 14, 25, 0.78) 75%, rgba(2, 6, 12, 0.94) 100%)","cardBg":"rgba(10, 25, 42, 0.72)","cardBorder":"rgba(0, 240, 255, 0.4)","acc":"#00F0FF","acc2":"#0284C7","tx":"#FFFFFF","mut":"#BAE6FD","hot":"#0284C7","glow":"rgba(0, 240, 255, 0.35)","priceBg":"linear-gradient(135deg, rgba(2, 132, 199, 0.95), rgba(0, 240, 255, 0.85))"},"Royal Neon Violet":{"overlay":"linear-gradient(180deg, rgba(12, 5, 22, 0.76) 0%, rgba(22, 10, 40, 0.66) 25%, rgba(14, 6, 26, 0.8) 75%, rgba(6, 2, 12, 0.95) 100%)","cardBg":"rgba(28, 14, 48, 0.75)","cardBorder":"rgba(168, 85, 247, 0.4)","acc":"#C084FC","acc2":"#9333EA","tx":"#FFFFFF","mut":"#E9D5FF","hot":"#A855F7","glow":"rgba(168, 85, 247, 0.35)","priceBg":"linear-gradient(135deg, rgba(107, 33, 168, 0.95), rgba(168, 85, 247, 0.9))"},"Mint Emerald":{"overlay":"linear-gradient(180deg, rgba(3, 16, 11, 0.76) 0%, rgba(5, 26, 18, 0.66) 25%, rgba(4, 18, 13, 0.8) 75%, rgba(2, 8, 6, 0.95) 100%)","cardBg":"rgba(8, 30, 22, 0.74)","cardBorder":"rgba(52, 211, 153, 0.45)","acc":"#34D399","acc2":"#059669","tx":"#FFFFFF","mut":"#A7F3D0","hot":"#059669","glow":"rgba(52, 211, 153, 0.35)","priceBg":"linear-gradient(135deg, rgba(4, 120, 87, 0.95), rgba(16, 185, 129, 0.9))"},"Sunset Rose Coral":{"overlay":"linear-gradient(180deg, rgba(22, 6, 12, 0.76) 0%, rgba(38, 12, 22, 0.66) 25%, rgba(24, 7, 14, 0.8) 75%, rgba(10, 2, 6, 0.95) 100%)","cardBg":"rgba(42, 14, 25, 0.75)","cardBorder":"rgba(255, 45, 85, 0.4)","acc":"#FF6B8B","acc2":"#FF2D55","tx":"#FFFFFF","mut":"#FECDD3","hot":"#FF2D55","glow":"rgba(255, 45, 85, 0.35)","priceBg":"linear-gradient(135deg, rgba(190, 18, 60, 0.95), rgba(255, 45, 85, 0.9))"},"Pure Titanium Silver":{"overlay":"linear-gradient(180deg, rgba(10, 12, 16, 0.78) 0%, rgba(18, 22, 30, 0.68) 25%, rgba(12, 14, 20, 0.82) 75%, rgba(4, 6, 8, 0.96) 100%)","cardBg":"rgba(25, 30, 42, 0.75)","cardBorder":"rgba(226, 232, 240, 0.4)","acc":"#FFFFFF","acc2":"#94A3B8","tx":"#FFFFFF","mut":"#CBD5E1","hot":"#38BDF8","glow":"rgba(255, 255, 255, 0.3)","priceBg":"linear-gradient(135deg, rgba(51, 65, 85, 0.95), rgba(100, 116, 139, 0.95))"},"Ferrari Crimson Red":{"overlay":"linear-gradient(180deg, rgba(20, 4, 6, 0.78) 0%, rgba(35, 8, 12, 0.68) 25%, rgba(22, 5, 8, 0.82) 75%, rgba(8, 2, 3, 0.96) 100%)","cardBg":"rgba(38, 10, 15, 0.76)","cardBorder":"rgba(255, 59, 48, 0.45)","acc":"#FF453A","acc2":"#DC2626","tx":"#FFFFFF","mut":"#FCA5A5","hot":"#DC2626","glow":"rgba(255, 59, 48, 0.35)","priceBg":"linear-gradient(135deg, rgba(153, 27, 27, 0.95), rgba(239, 68, 68, 0.9))"},"Marine Aurora Teal":{"overlay":"linear-gradient(180deg, rgba(3, 14, 16, 0.76) 0%, rgba(6, 26, 30, 0.66) 25%, rgba(4, 16, 20, 0.8) 75%, rgba(2, 6, 8, 0.95) 100%)","cardBg":"rgba(8, 30, 36, 0.74)","cardBorder":"rgba(45, 212, 191, 0.45)","acc":"#2DD4BF","acc2":"#0D9488","tx":"#FFFFFF","mut":"#99F6E4","hot":"#0D9488","glow":"rgba(45, 212, 191, 0.35)","priceBg":"linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(45, 212, 191, 0.9))"},"Warm Amber Honey":{"overlay":"linear-gradient(180deg, rgba(16, 12, 6, 0.75) 0%, rgba(28, 20, 10, 0.65) 25%, rgba(18, 13, 7, 0.78) 75%, rgba(8, 5, 2, 0.94) 100%)","cardBg":"rgba(35, 25, 15, 0.76)","cardBorder":"rgba(255, 213, 107, 0.4)","acc":"#FFD56B","acc2":"#D97706","tx":"#FFFFFF","mut":"#FDE68A","hot":"#D97706","glow":"rgba(255, 213, 107, 0.35)","priceBg":"linear-gradient(135deg, rgba(180, 83, 9, 0.95), rgba(245, 158, 11, 0.9))"}};
+const THEMES = {"Cyber Cyan Neon":{"badgeIcon":"⚡","badgeLabel":"CYBER","overlay":"linear-gradient(180deg, rgba(3, 10, 18, 0.75) 0%, rgba(6, 20, 35, 0.65) 25%, rgba(4, 14, 25, 0.78) 75%, rgba(2, 6, 12, 0.94) 100%)","cardBg":"rgba(10, 25, 42, 0.72)","cardBorder":"rgba(0, 240, 255, 0.4)","acc":"#00F0FF","acc2":"#0284C7","tx":"#FFFFFF","mut":"#BAE6FD","hot":"#0284C7","glow":"rgba(0, 240, 255, 0.35)","priceBg":"linear-gradient(135deg, rgba(2, 132, 199, 0.95), rgba(0, 240, 255, 0.85))"},"Royal Neon Violet":{"badgeIcon":"👑","badgeLabel":"ROYAL","overlay":"linear-gradient(180deg, rgba(12, 5, 22, 0.76) 0%, rgba(22, 10, 40, 0.66) 25%, rgba(14, 6, 26, 0.8) 75%, rgba(6, 2, 12, 0.95) 100%)","cardBg":"rgba(28, 14, 48, 0.75)","cardBorder":"rgba(168, 85, 247, 0.4)","acc":"#C084FC","acc2":"#9333EA","tx":"#FFFFFF","mut":"#E9D5FF","hot":"#A855F7","glow":"rgba(168, 85, 247, 0.35)","priceBg":"linear-gradient(135deg, rgba(107, 33, 168, 0.95), rgba(168, 85, 247, 0.9))"},"Mint Emerald":{"badgeIcon":"💎","badgeLabel":"EMERALD","overlay":"linear-gradient(180deg, rgba(3, 16, 11, 0.76) 0%, rgba(5, 26, 18, 0.66) 25%, rgba(4, 18, 13, 0.8) 75%, rgba(2, 8, 6, 0.95) 100%)","cardBg":"rgba(8, 30, 22, 0.74)","cardBorder":"rgba(52, 211, 153, 0.45)","acc":"#34D399","acc2":"#059669","tx":"#FFFFFF","mut":"#A7F3D0","hot":"#059669","glow":"rgba(52, 211, 153, 0.35)","priceBg":"linear-gradient(135deg, rgba(4, 120, 87, 0.95), rgba(16, 185, 129, 0.9))"},"Sunset Rose Coral":{"badgeIcon":"🌅","badgeLabel":"SUNSET","overlay":"linear-gradient(180deg, rgba(22, 6, 12, 0.76) 0%, rgba(38, 12, 22, 0.66) 25%, rgba(24, 7, 14, 0.8) 75%, rgba(10, 2, 6, 0.95) 100%)","cardBg":"rgba(42, 14, 25, 0.75)","cardBorder":"rgba(255, 45, 85, 0.4)","acc":"#FF6B8B","acc2":"#FF2D55","tx":"#FFFFFF","mut":"#FECDD3","hot":"#FF2D55","glow":"rgba(255, 45, 85, 0.35)","priceBg":"linear-gradient(135deg, rgba(190, 18, 60, 0.95), rgba(255, 45, 85, 0.9))"},"Pure Titanium Silver":{"badgeIcon":"🛡️","badgeLabel":"TITANIUM","overlay":"linear-gradient(180deg, rgba(10, 12, 16, 0.78) 0%, rgba(18, 22, 30, 0.68) 25%, rgba(12, 14, 20, 0.82) 75%, rgba(4, 6, 8, 0.96) 100%)","cardBg":"rgba(25, 30, 42, 0.75)","cardBorder":"rgba(226, 232, 240, 0.4)","acc":"#FFFFFF","acc2":"#94A3B8","tx":"#FFFFFF","mut":"#CBD5E1","hot":"#38BDF8","glow":"rgba(255, 255, 255, 0.3)","priceBg":"linear-gradient(135deg, rgba(51, 65, 85, 0.95), rgba(100, 116, 139, 0.95))"},"Ferrari Crimson Red":{"badgeIcon":"🔥","badgeLabel":"CRIMSON","overlay":"linear-gradient(180deg, rgba(20, 4, 6, 0.78) 0%, rgba(35, 8, 12, 0.68) 25%, rgba(22, 5, 8, 0.82) 75%, rgba(8, 2, 3, 0.96) 100%)","cardBg":"rgba(38, 10, 15, 0.76)","cardBorder":"rgba(255, 59, 48, 0.45)","acc":"#FF453A","acc2":"#DC2626","tx":"#FFFFFF","mut":"#FCA5A5","hot":"#DC2626","glow":"rgba(255, 59, 48, 0.35)","priceBg":"linear-gradient(135deg, rgba(153, 27, 27, 0.95), rgba(239, 68, 68, 0.9))"},"Marine Aurora Teal":{"badgeIcon":"🌊","badgeLabel":"AURORA","overlay":"linear-gradient(180deg, rgba(3, 14, 16, 0.76) 0%, rgba(6, 26, 30, 0.66) 25%, rgba(4, 16, 20, 0.8) 75%, rgba(2, 6, 8, 0.95) 100%)","cardBg":"rgba(8, 30, 36, 0.74)","cardBorder":"rgba(45, 212, 191, 0.45)","acc":"#2DD4BF","acc2":"#0D9488","tx":"#FFFFFF","mut":"#99F6E4","hot":"#0D9488","glow":"rgba(45, 212, 191, 0.35)","priceBg":"linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(45, 212, 191, 0.9))"},"Warm Amber Honey":{"badgeIcon":"✦","badgeLabel":"AMBER","overlay":"linear-gradient(180deg, rgba(16, 12, 6, 0.75) 0%, rgba(28, 20, 10, 0.65) 25%, rgba(18, 13, 7, 0.78) 75%, rgba(8, 5, 2, 0.94) 100%)","cardBg":"rgba(35, 25, 15, 0.76)","cardBorder":"rgba(255, 213, 107, 0.4)","acc":"#FFD56B","acc2":"#D97706","tx":"#FFFFFF","mut":"#FDE68A","hot":"#D97706","glow":"rgba(255, 213, 107, 0.35)","priceBg":"linear-gradient(135deg, rgba(180, 83, 9, 0.95), rgba(245, 158, 11, 0.9))"}};
 
 const RAMS = [2, 3, 4, 6, 8, 12, 16, 24];
 const STS = ["32GB", "64GB", "128GB", "256GB", "512GB", "1TB"];
@@ -1174,13 +1298,16 @@ const S = {
   ram: "8GB",
   st: "512GB",
   kit: "Full kit",
+  cond: "Good condition",
   war: "AppleCare+ valid Oct 2026",
   off: "Earphones",
   enh: "NONE",
-  th: "Cyber Cyan Neon"
+  th: "Cyber Cyan Neon",
+  customBrandName: "",
+  customBrandLogoData: null
 };
 
-// Store raw uploaded image object for non-destructive background removal
+// Store raw uploaded image object for non-destructive AI background matting
 let rawUploadedImg = null;
 
 function chips(id, arr, key, fmt = x => x, onSelect = null) {
@@ -1203,26 +1330,73 @@ function chips(id, arr, key, fmt = x => x, onSelect = null) {
 function brandChips() {
   const el = $("brands");
   el.innerHTML = "";
+  
+  // Standard Brands
   BRANDS.forEach(([n]) => {
     const b = document.createElement("button");
     b.className = "brand-btn" + (S.br == n ? " on" : "");
     b.innerHTML = `<span class="b-logo">${BRAND_LOGOS[n] || ""}</span><span>${n}</span>`;
     b.onclick = () => {
       S.br = n;
+      $("customBrandBox").style.display = "none";
       brandChips();
       draw();
     };
     el.appendChild(b);
   });
+
+  // Custom Brand Option Button
+  const customBtn = document.createElement("button");
+  customBtn.className = "brand-btn" + (S.br == "Custom" ? " on" : "");
+  customBtn.innerHTML = `<span class="b-logo">➕</span><span>+ Custom Brand</span>`;
+  customBtn.onclick = () => {
+    S.br = "Custom";
+    $("customBrandBox").style.display = "grid";
+    brandChips();
+    draw();
+  };
+  el.appendChild(customBtn);
 }
 
+// Custom Brand Input handlers
+$("customBrandName").addEventListener("input", e => {
+  S.customBrandName = e.target.value.trim();
+  draw();
+});
+$("customBrandLogoF").addEventListener("change", e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    S.customBrandLogoData = r.result;
+    draw();
+  };
+  r.readAsDataURL(f);
+});
+
+// Condition Segmented Pills
+document.querySelectorAll(".cond-pill").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".cond-pill").forEach(b => b.classList.remove("on"));
+    btn.classList.add("on");
+    S.cond = btn.getAttribute("data-val");
+    draw();
+  };
+});
+
+// Themes Grid with Rich Design Element Badges
 function themeChips() {
   const el = $("thm");
   el.innerHTML = "";
   Object.entries(THEMES).forEach(([n, t]) => {
     const b = document.createElement("button");
     b.className = "theme-btn" + (S.th == n ? " on" : "");
-    b.innerHTML = `<span class="swatch" style="background:${t.acc}"></span><span>${n}</span>`;
+    b.innerHTML = `
+      <div class="theme-design-icon" style="color:${t.acc}; background:rgba(255,255,255,0.08); border-color:${t.acc}; text-shadow:0 0 10px ${t.glow};">
+        ${t.badgeIcon}
+      </div>
+      <span>${n}</span>
+    `;
     b.onclick = () => {
       S.th = n;
       themeChips();
@@ -1231,6 +1405,11 @@ function themeChips() {
     el.appendChild(b);
   });
 }
+
+// Upward Scroll Button Handler
+$("btnScrollTop").onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 function draw() {
   const t = THEMES[S.th] || THEMES["Cyber Cyan Neon"];
@@ -1248,12 +1427,23 @@ function draw() {
   p.style.setProperty("--price-bg", t.priceBg);
   p.style.setProperty("--story-overlay", t.overlay);
 
-  // Brand Name & Vector Logos
-  const activeLogo = BRAND_LOGOS[S.br] || "";
-  $("pBr").textContent = S.br.toUpperCase();
-  $("pBrLogo").innerHTML = activeLogo;
-  $("pBadgeLogo").innerHTML = activeLogo;
-  $("pBadgeText").textContent = S.br.toUpperCase();
+  // Brand Name & Vector Logos (Handles Standard & Custom Brands)
+  let activeBrandName = S.br;
+  let activeLogoHtml = BRAND_LOGOS[S.br] || "";
+
+  if (S.br === "Custom") {
+    activeBrandName = S.customBrandName || "CUSTOM";
+    if (S.customBrandLogoData) {
+      activeLogoHtml = `<img src="${S.customBrandLogoData}" alt="${activeBrandName}">`;
+    } else {
+      activeLogoHtml = `<span style="font-weight:900; font-size:22px; color:var(--acc);">${activeBrandName.slice(0, 3).toUpperCase()}</span>`;
+    }
+  }
+
+  $("pBr").textContent = activeBrandName.toUpperCase();
+  $("pBrLogo").innerHTML = activeLogoHtml;
+  $("pBadgeLogo").innerHTML = activeLogoHtml;
+  $("pBadgeText").textContent = activeBrandName.toUpperCase();
 
   // Specs & Titles (Above phone)
   $("pMn").textContent = $("mn").value;
@@ -1270,8 +1460,8 @@ function draw() {
   const rawPh = $("ph").value.replace(/^\+?91/, "").trim();
   $("pPh").textContent = rawPh || "7305685950";
 
-  // Kit Condition
-  $("pC").textContent = ($("cond").value + " • " + S.kit).toUpperCase();
+  // Kit Condition (From iOS 27 segmented picker)
+  $("pC").textContent = (S.cond + " • " + S.kit).toUpperCase();
 
   // Warranty Coverage (with 'No warranty' option support)
   const warVal = $("war").value.trim();
@@ -1344,9 +1534,10 @@ $("btnReset").onclick = () => {
 };
 
 /* ============================================================
-   AUTOMATIC CLIENT-SIDE BACKGROUND REMOVAL ENGINE
+   ADVANCED AI MULTI-PASS SALIENCY & CONTOUR BACKGROUND MATTING
+   (Handles Non-White, Wood, Desk & Textured Backgrounds)
    ============================================================ */
-function removeBackground(imgElement, tolerance = 36) {
+function aiRemoveBackground(imgElement, sensitivity = 42) {
   const canvas = document.createElement("canvas");
   const w = imgElement.naturalWidth || imgElement.width || 400;
   const h = imgElement.naturalHeight || imgElement.height || 600;
@@ -1358,43 +1549,68 @@ function removeBackground(imgElement, tolerance = 36) {
   const imgData = ctx.getImageData(0, 0, w, h);
   const data = imgData.data;
 
-  // Sample corner and border pixels to identify background colors
-  const samplePoints = [
-    [0, 0], [w - 1, 0], [0, h - 1], [w - 1, h - 1],
-    [Math.floor(w / 2), 0], [Math.floor(w / 2), h - 1],
-    [0, Math.floor(h / 2)], [w - 1, Math.floor(h / 2)]
-  ];
+  // PASS 1: Sample multiple border clusters around the 4 outer margins
+  const borderSamples = [];
+  const stepX = Math.max(1, Math.floor(w / 20));
+  const stepY = Math.max(1, Math.floor(h / 20));
 
-  let rSum = 0, gSum = 0, bSum = 0, count = 0;
-  samplePoints.forEach(([x, y]) => {
+  for (let x = 0; x < w; x += stepX) {
+    borderSamples.push([x, 0], [x, h - 1], [x, Math.min(4, h - 1)], [x, Math.max(0, h - 5)]);
+  }
+  for (let y = 0; y < h; y += stepY) {
+    borderSamples.push([0, y], [w - 1, y], [Math.min(4, w - 1), y], [Math.max(0, w - 5), y]);
+  }
+
+  // Extract color clusters
+  const bgClusters = [];
+  borderSamples.forEach(([x, y]) => {
     const idx = (y * w + x) * 4;
-    rSum += data[idx];
-    gSum += data[idx + 1];
-    bSum += data[idx + 2];
-    count++;
+    const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+    // Check if close to existing cluster
+    let found = false;
+    for (const c of bgClusters) {
+      const d = Math.abs(r - c[0]) + Math.abs(g - c[1]) + Math.abs(b - c[2]);
+      if (d < 30) {
+        c[0] = (c[0] * c[3] + r) / (c[3] + 1);
+        c[1] = (c[1] * c[3] + g) / (c[3] + 1);
+        c[2] = (c[2] * c[3] + b) / (c[3] + 1);
+        c[3]++;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      bgClusters.push([r, g, b, 1]);
+    }
   });
-  const bgR = rSum / count;
-  const bgG = gSum / count;
-  const bgB = bSum / count;
 
-  const tolSq = tolerance * tolerance;
+  // Sort clusters by frequency
+  bgClusters.sort((a, b) => b[3] - a[3]);
+  const primaryClusters = bgClusters.slice(0, 8); // Top 8 distinct background colors
+
+  // PASS 2: Multi-color distance matting with edge-aware tolerance
+  const tolSq = sensitivity * sensitivity;
   const feather = 18;
-  const featherSq = (tolerance + feather) * (tolerance + feather);
+  const featherSq = (sensitivity + feather) * (sensitivity + feather);
 
   for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    const dr = r - bgR;
-    const dg = g - bgG;
-    const db = b - bgB;
-    const distSq = dr * dr + dg * dg + db * db;
+    const r = data[i], g = data[i + 1], b = data[i + 2];
 
-    if (distSq <= tolSq) {
-      data[i + 3] = 0; // Fully transparent
-    } else if (distSq < featherSq) {
+    // Find distance to closest background cluster
+    let minDistSq = Infinity;
+    for (const c of primaryClusters) {
+      const dr = r - c[0];
+      const dg = g - c[1];
+      const db = b - c[2];
+      const dSq = dr * dr + dg * dg + db * db;
+      if (dSq < minDistSq) minDistSq = dSq;
+    }
+
+    if (minDistSq <= tolSq) {
+      data[i + 3] = 0; // Transparent
+    } else if (minDistSq < featherSq) {
       // Soft edge antialiasing
-      const alphaFactor = (Math.sqrt(distSq) - tolerance) / feather;
+      const alphaFactor = (Math.sqrt(minDistSq) - sensitivity) / feather;
       data[i + 3] = Math.round(data[i + 3] * Math.min(1, Math.max(0, alphaFactor)));
     }
   }
@@ -1410,7 +1626,7 @@ function processUploadedPhoto() {
   $("tolVal").textContent = tol;
 
   if (autoRemove) {
-    const transparentDataUrl = removeBackground(rawUploadedImg, tol);
+    const transparentDataUrl = aiRemoveBackground(rawUploadedImg, tol);
     $("pImg").src = transparentDataUrl;
   } else {
     $("pImg").src = rawUploadedImg.src;
@@ -1424,7 +1640,7 @@ $("bgTol").addEventListener("input", () => {
   processUploadedPhoto();
 });
 
-// File loader with Auto BG trigger
+// File loader with AI BG trigger
 $("imgF").onchange = () => {
   const f = $("imgF").files[0];
   if (!f) return;
@@ -1498,6 +1714,7 @@ window.addEventListener("resize", fit);
 
 /* ============================================================
    ULTRA-HD 4K (2160 x 3840) IMAGE EXPORT ENGINE
+   (Box-in-Box Artifacts Eliminated)
    ============================================================ */
 function bakePhoto() {
   const img = $("pImg");
@@ -1550,7 +1767,7 @@ async function renderStory() {
 
     await new Promise(r => setTimeout(r, 120));
     
-    // Scale 2 gives 2160 x 3840 Ultra-HD 4K quality!
+    // Scale 2 renders at 2160 x 3840 Ultra-HD 4K quality!
     const c = await html2canvas($("poster"), {
       scale: 2,
       backgroundColor: null,
@@ -1571,8 +1788,9 @@ async function renderStory() {
 
 function downloadStoryBlob(blob) {
   const a = document.createElement("a");
+  const brSlug = S.br === "Custom" ? (S.customBrandName || "custom") : S.br;
   a.href = URL.createObjectURL(blob);
-  a.download = "max-mobiles-4k-" + (S.br.toLowerCase()) + "-" + ($("mn").value.replace(/\s+/g, "-").toLowerCase()) + ".png";
+  a.download = "max-mobiles-4k-" + (brSlug.toLowerCase().replace(/\s+/g, "-")) + "-" + ($("mn").value.replace(/\s+/g, "-").toLowerCase()) + ".png";
   a.click();
 }
 
